@@ -1,0 +1,11 @@
+{
+  "name": "grimoire",
+  "version": "0.0.0",
+  "description": "The library of the grimoire: mature skills for requirements, user stories and more.",
+  "author": {
+    "name": "Gabriel Marques"
+  },
+  "homepage": "https://github.com/marquesgabriel/grimoire",
+  "repository": "https://github.com/marquesgabriel/grimoire",
+  "license": "CC-BY-4.0"
+}
