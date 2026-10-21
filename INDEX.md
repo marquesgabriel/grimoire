@@ -11,6 +11,8 @@ Ready to use; installed with the `grimoire` plugin.
 
 | Skill | What it does |
 |---|---|
+| `gathering-requirements` | Interviews the user like a Product Owner and writes a requirements document. First step of the requirements → stories → code pipeline. |
+| `writing-user-stories` | Breaks a requirements document into epics, features and user stories, with acceptance criteria, estimates, an implementation order and a review of technical gaps and business-rule risks. |
 
 ## Incubator
 
