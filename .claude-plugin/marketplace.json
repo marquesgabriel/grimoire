@@ -1,0 +1,14 @@
+{
+  "name": "grimoire",
+  "description": "Gabriel Marques' spellbook of Claude Code skills.",
+  "owner": {
+    "name": "Gabriel Marques"
+  },
+  "plugins": [
+    {
+      "name": "grimoire",
+      "source": "./library",
+      "description": "The library of the grimoire: mature skills for requirements, user stories and more."
+    }
+  ]
+}
