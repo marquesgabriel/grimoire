@@ -23,7 +23,7 @@ Works, but still being shaped. Not published.
 
 | Skill | What it does | What's missing |
 |---|---|---|
-| `coding-user-stories` | Guides the implementation of a backlog story by story, respecting dependencies and acceptance criteria. Last step of the requirements → stories → code pipeline. | A rewrite so Claude implements each story through a branch and a pull request, keeping the backlog and board in sync ([#6](https://github.com/marquesgabriel/grimoire/issues/6)). |
+| `coding-user-stories` | Implements a backlog story by story: one issue on the board and one branch and pull request per story, with tests, the project's checks and `Closes #N`, respecting dependencies and acceptance criteria. Last step of the requirements → stories → code pipeline. | A first real use in a project before promotion ([#6](https://github.com/marquesgabriel/grimoire/issues/6)). |
 | `scaffolding-projects` | An opinionated standard for React/TypeScript projects on GitHub: Vite, versioning and releases, CI/CD, branch protection, labels and board, pull requests, docs. Sets up new projects or audits existing ones. | Promotion, once the rewrite is reviewed ([#7](https://github.com/marquesgabriel/grimoire/issues/7)). |
 
 ### Docs
