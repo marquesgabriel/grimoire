@@ -1,108 +1,117 @@
 ---
 name: curating-resume
-description: Keeps Gabriel's résumé (the LaTeX-Resume repository) up to date from career achievements and facts. Use when Gabriel shares an achievement, recent or old ("add this to my résumé", "I did X at work", "I remembered something from a previous job"), asks to update or review the résumé, or asks to tailor it to a job posting. Records the fact in career-log.md, proposes the bullet, updates sections/*.tex, checks the PDF and opens the pull request.
+description: Keeps a résumé kept as code (LaTeX, Markdown or any source versioned with Git) up to date from the user's career achievements and facts. Use when the user shares an achievement, recent or old ("add this to my résumé", "I did X at work", "I remembered something from a previous job"), asks to update, review or release their résumé, or asks to tailor it to a job posting. Reads the project's specifics from docs/RESUME.md (fact log, content files, build and checks, privacy, workflow), offering to create that file when it's missing. Records the fact, confirms it with the user, proposes the bullet, updates the source, checks the build and opens the pull request.
 ---
 
 # Curating the résumé
 
-> **Incubator:** this skill only works inside
-> [LaTeX-Resume](https://github.com/marquesgabriel/LaTeX-Resume): it relies
-> on that repository's files, build and guidelines. Making it reusable is
-> tracked in [grimoire#8](https://github.com/marquesgabriel/grimoire/issues/8),
-> and the job-tailoring mode in
-> [grimoire#9](https://github.com/marquesgabriel/grimoire/issues/9).
+> **Incubator:** the job-tailoring mode is still provisional
+> ([grimoire#9](https://github.com/marquesgabriel/grimoire/issues/9)).
 
-Automates the flow the repository already follows: **fact → record → bullet
-→ `.tex` → build → PR → (Gabriel merges) → release**. Read first:
-`CLAUDE.md`, `docs/CONTENT-GUIDELINES.md`, `CONTRIBUTING.md` and
-`career-log.md`.
+Keeps a résumé that lives in a repository up to date, following the flow:
+**fact → confirm → record → bullet → source → build → pull request → (the
+user merges) → release**.
+
+The person you're talking to owns the résumé. Every fact that goes into it
+comes from them and is confirmed by them: never write something they didn't
+say or confirm.
+
+## Before anything: the project file
+
+Everything specific to a project is declared in **`docs/RESUME.md`**, a plain
+file that people and any tool can read. Read it first, then the files it
+points to (content guidelines, fact log, contributing notes).
+
+If it doesn't exist:
+
+1. Look around the repository (README, build files, folders, CI) and draft
+   it from [`resume-project.template.md`](resume-project.template.md),
+   filling in what you can infer.
+2. Show the draft to the user and ask about what's missing or uncertain, 3
+   to 4 questions at a time. Don't guess commands or privacy rules.
+3. Commit it on a branch and open a pull request, like any other change.
+
+When `docs/RESUME.md` leaves something out, ask the user instead of
+assuming, and suggest adding the answer to the file.
 
 ## Language
 
-Talk to Gabriel in the language they write in (usually Portuguese). Notes in
-`career-log.md`, commits and the CHANGELOG are in Portuguese; the résumé,
-issues and pull requests are in English.
+Talk to the user in the language they write in. Use the languages declared
+in `docs/RESUME.md` for the résumé, the fact log, commits and pull requests.
 
 ## Mode 1: record an achievement
 
 1. **Understand the fact.** If something essential is missing (when, which
    company, what their role was, any number), ask at most 3 to 4 questions at
-   a time. Don't ask what's already in `career-log.md`.
-2. **Branch.** Create `feat/<short-description>` from an up-to-date `main`.
-   Never commit to `main`.
-3. **Record it in `career-log.md`**, in the right job's section:
-   - `✅` for what Gabriel confirmed, `❓` for what's still missing, always
-     with `*(anotado YYYY-MM-DD)*`.
-   - Write the full fact, even if the résumé will only use part of it. The
-     log is the source of truth; the résumé is a selection.
-4. **Propose the bullet** in American English: action verb + what was done +
-   result or scale. Follow `docs/CONTENT-GUIDELINES.md`:
-   - never write the client's name: use `\clientref` ("one of the largest
-     U.S. health insurers" in the public version; the name only appears in
-     the internal version, through `\clientname` in the gitignored
-     `professional.contact.tex`);
-   - don't attribute to them what isn't theirs (e.g. the client's API
-     architecture);
-   - only ✅ facts; no numbers estimated by you;
-   - numbers only with evidence ("ATS and impact" in the guidelines): scale
-     they know (apps, components, people, users) can go in; gains
-     (percentages, time or money saved) only if measured. Without evidence,
-     describe what was done and its scope, without pushing for a metric;
+   a time. Don't ask what's already in the fact log.
+2. **Confirm it.** Repeat the fact back as you understood it, with dates,
+   scope and numbers, and ask the user to confirm. Only confirmed facts go
+   into the résumé. What they aren't sure about is recorded as pending, not
+   written as fact.
+3. **Branch** from the up-to-date main branch, with the naming declared in
+   the project file. Never commit to the main branch.
+4. **Record it in the fact log**, in the right section and with the
+   project's markers (confirmed / pending, plus the date of the note). Write
+   the full fact, even if the résumé will only use part of it: the log is
+   the source of truth; the résumé is a selection. If the project has no
+   fact log, suggest one before going on.
+5. **Propose the bullet** in the résumé's language: action verb + what was
+   done + result or scale. Follow the project's content guidelines, and
+   always:
+   - only confirmed facts; no numbers estimated by you;
+   - numbers only with evidence: scale they know (apps, components, people,
+     users) can go in; gains (percentages, time or money saved) only if
+     measured. Without evidence, describe what was done and its scope,
+     without pushing for a metric;
+   - don't attribute to them what isn't theirs (the team's or the client's
+     work);
    - acronym plus full term on the first mention of searchable terms
      ("Amazon Web Services (AWS)");
-   - dates as `Mon YYYY -- Mon YYYY`; year only when the month is unknown
-     (and record a ❓);
-   - technical focus on dev / dev lead, web; mobile only as breadth.
-   Show the bullet to Gabriel and adjust it if they ask. If they already said to
-   go ahead without review, continue and leave the review for the PR.
-5. **Update `sections/*.tex`.** Place the bullet under the right job; if the
-   block goes over ~9 bullets, suggest what to merge or cut. Use only the
-   `resume.cls` macros (`\role`, `\position`, `\entry`, `\subtitle`,
-   `\skillline`). Escape `&`, `%`, `~`, `#`, `_` and use `--` for date
-   ranges.
-6. **Check.**
-   - With local TeX: `make pdf` (2 pages, no `Overfull`) and `make ats`.
-   - Without local TeX: push and run `gh workflow run build.yml --ref
-     <branch>`. CI fails over 2 pages, on any `Overfull`, or if text
-     extraction scrambles the sections. Download the `resume` artifact and
-     check the PDF.
-   - If it goes over 2 pages, suggest cuts in the oldest or least relevant
-     items, never in the current position.
-7. **Commit** in Portuguese, Conventional Commits (`feat: ...`), with no
-   Claude attribution.
-8. **Pull request** in English against `main`, with a summary, a test plan
-   and `Closes #N` when there's an issue. **Don't merge**: Gabriel reviews.
+   - dates in the résumé's format, consistent everywhere; year only when the
+     month is unknown (and record it as pending);
+   - respect the privacy rules (names that must not appear, placeholders to
+     use instead).
+   Show the bullet to the user and adjust it if they ask. If they already
+   said to go ahead without review, continue and leave the review for the
+   pull request.
+6. **Update the source.** Place the bullet under the right entry, with the
+   format rules declared in the project file (macros, escaping). If a block
+   grows past the size the guidelines allow, suggest what to merge or cut.
+7. **Check** with the commands and limits declared in the project file
+   (build, text extraction, page limit, warnings). If the local toolchain
+   isn't available, use the CI route it declares. If the résumé goes over the
+   page limit, suggest cuts in the oldest or least relevant items, never in
+   the current position.
+8. **Commit** with the project's commit convention. Never commit the files
+   declared as private.
+9. **Pull request** against the main branch, with a summary, a test plan
+   and `Closes #N` when there's an issue. **Don't merge**: the user reviews.
 
-## Mode 2: close a version
+## Mode 2: release a version
 
-Once a phase's pull requests are in `main`:
-
-1. On a branch, add the entry at the top of `CHANGELOG.md` (`## [vX.Y] —
-   YYYY-MM-DD`, Keep a Changelog format, in Portuguese) and update the
-   status in `ROADMAP.md`. Open the pull request.
-2. When Gabriel merges it, CI creates the tag and publishes the release with
-   `Gabriel-Marques-Resume.pdf` on its own. Check the release (asset, notes,
-   "Latest"); don't create the tag by hand.
+Once the changes for a version are merged, follow the release steps in the
+project file (typically a changelog entry on a branch and a pull request,
+with CI publishing the PDF on merge). Check the published release (asset,
+notes, latest); don't create tags by hand unless the project says so.
 
 ## Mode 3: tailor to a job posting
 
-> ❓ **Depends on Phase 6** (per-job variant mechanism, LaTeX-Resume#8),
-> not defined yet. Until then:
+Provisional. If the project file declares how variants work, follow it.
+Otherwise:
 
 1. Take the job description and list its key terms (stack, tools,
    responsibilities).
-2. Compare with `sections/*.tex` and `career-log.md`: what already appears,
-   what's in the log but not in the résumé, and what's really missing. Show
-   the current fit: how many of the essential terms appear (target: ~75–85%).
-3. Propose changes **only with ✅ facts**, using the posting's terms openly
-   (acronym plus full term) inside bullets and skills. What they don't have
-   stays out, even if it lowers the fit. No ATS tricks (white text, prompt
-   injection).
+2. Compare with the résumé and the fact log: what already appears, what's in
+   the log but not in the résumé, and what's really missing. Show the current
+   fit: how many of the essential terms appear (target: ~75–85%).
+3. Propose changes **only with confirmed facts**, using the posting's terms
+   openly (acronym plus full term) inside bullets and skills. What the user
+   doesn't have stays out, even if it lowers the fit. No ATS tricks (white
+   text, prompt injection).
 4. Make the changes on a `variant/<company-or-role>` branch and open the pull
    request as a draft, so it doesn't mix with the main version.
 
 ## Always
 
-- When unsure about a fact, record a `❓` in `career-log.md` and ask; never
-  make it up.
+- When unsure about a fact, record it as pending and ask; never make it up.
 - Every change goes through a branch and a pull request.
