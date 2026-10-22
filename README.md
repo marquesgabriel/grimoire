@@ -30,15 +30,19 @@ repository's plugin marketplace:
 
 ```bash
 claude plugin marketplace add marquesgabriel/grimoire
-claude plugin install grimoire@grimoire
+claude plugin install grimoire
 ```
+
+To update after a new release: `claude plugin marketplace update grimoire`.
 
 Skills are then available with the plugin prefix, for example
 `/grimoire:gathering-requirements`. Claude Code also picks them up
 automatically when a request matches a skill's description.
 
 To make a project suggest the plugin to everyone who opens it, add this to
-the project's `.claude/settings.json`:
+the project's `.claude/settings.json`. There the plugin is written as
+`grimoire@grimoire` (plugin name `@` marketplace name), the one place
+Claude Code requires both:
 
 ```json
 {
