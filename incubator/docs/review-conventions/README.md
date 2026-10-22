@@ -67,10 +67,15 @@ than none.
 
 ## Worked example
 
-The numbered list under "Project-specific checks" in the retired
-[`reviewing-code`](../../../graveyard/skills/reviewing-code/SKILL.md) skill
-is mtg's set of conventions: a package manager that must not change, an
-environment variable prefix kept on purpose, a regex that once shipped
-without the `g` flag, a shared parser that must be reused, and fixed print
-constants. Moving it to `token-generator/docs/REVIEW-CONVENTIONS.md` is part
-of [grimoire#10](https://github.com/marquesgabriel/grimoire/issues/10).
+[mtg's `docs/REVIEW-CONVENTIONS.md`](https://github.com/marquesgabriel/mtg/blob/main/docs/REVIEW-CONVENTIONS.md)
+is the first real conventions file. It has:
+
+- a package manager that must not change;
+- an environment variable prefix kept on purpose;
+- a regex that once shipped without the `g` flag;
+- a shared parser that must be reused;
+- fixed print constants;
+- a short checklist for release promotions.
+
+It started as the retired
+[`reviewing-code`](../../../graveyard/skills/reviewing-code/SKILL.md) skill.
