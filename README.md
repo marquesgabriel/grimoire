@@ -33,7 +33,13 @@ claude plugin marketplace add marquesgabriel/grimoire
 claude plugin install grimoire
 ```
 
-To update after a new release: `claude plugin marketplace update grimoire`.
+To update after a new release, refresh the marketplace and then the plugin,
+and restart Claude Code:
+
+```bash
+claude plugin marketplace update grimoire
+claude plugin update grimoire
+```
 
 Skills are then available with the plugin prefix, for example
 `/grimoire:gathering-requirements`. Claude Code also picks them up
