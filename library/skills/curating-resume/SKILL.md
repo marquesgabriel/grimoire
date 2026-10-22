@@ -5,7 +5,7 @@ description: Keeps a résumé kept as code (LaTeX, Markdown or any source versio
 
 # Curating the résumé
 
-> **Incubator:** the job-tailoring mode is still provisional
+> The job-tailoring mode (mode 3) is still provisional
 > ([grimoire#9](https://github.com/marquesgabriel/grimoire/issues/9)).
 
 Keeps a résumé that lives in a repository up to date, following the flow:
