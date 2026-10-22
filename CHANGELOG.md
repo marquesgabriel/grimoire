@@ -4,6 +4,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/); versions
 follow [SemVer](https://semver.org/). Each version entry merged into `main`
 becomes a tag and a GitHub release automatically.
 
+## [v1.3.0] — 2026-10-22
+### Alterado
+- `curating-resume`: suporte a currículos em mais de um idioma. Quando o `docs/RESUME.md` declara várias versões, cada mudança vai para todas no mesmo pull request, escrita nas convenções de cada idioma e confirmada em todas; o build e as checagens rodam para cada versão. O modelo do `docs/RESUME.md` ganha o campo correspondente.
+
 ## [v1.2.0] — 2026-10-22
 ### Adicionado
 - Library: `scaffolding-projects` promovida do incubator, reescrita como padrão genérico (montar um projeto novo ou auditar um existente), sem o estado datado dos projetos e com a regra de PRs dependentes do CONTRIBUTING.

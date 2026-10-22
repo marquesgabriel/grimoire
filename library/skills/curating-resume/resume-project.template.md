@@ -42,6 +42,9 @@ skill).
 
 ## Languages
 
-- **Résumé:** `<language>`.
+- **Résumé:** `<language>`. With several versions: `<each language and
+  where its content lives, which one is the reference, the conventions of
+  each, how they're kept in sync (checks, the rule for a one-language
+  change)>`.
 - **Fact log:** `<language>`.
 - **Commits / pull requests / changelog:** `<languages>`.
