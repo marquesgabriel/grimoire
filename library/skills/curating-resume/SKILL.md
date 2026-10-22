@@ -39,6 +39,15 @@ assuming, and suggest adding the answer to the file.
 Talk to the user in the language they write in. Use the languages declared
 in `docs/RESUME.md` for the résumé, the fact log, commits and pull requests.
 
+**Several language versions.** When `docs/RESUME.md` declares the résumé in
+more than one language, all versions carry the same content: every change
+(a bullet, a date, a cut) goes into each of them, in the same pull request.
+Write each version following that language's conventions as declared in the
+project (section titles, date format, which terms stay untranslated), not
+as a word-for-word translation, and show every version when you confirm the
+bullet. A change meant for one language only (such as a typo fix) is the
+exception; follow what the project file says for it.
+
 ## Mode 1: record an achievement
 
 1. **Understand the fact.** If something essential is missing (when, which
@@ -55,9 +64,9 @@ in `docs/RESUME.md` for the résumé, the fact log, commits and pull requests.
    the full fact, even if the résumé will only use part of it: the log is
    the source of truth; the résumé is a selection. If the project has no
    fact log, suggest one before going on.
-5. **Propose the bullet** in the résumé's language: action verb + what was
-   done + result or scale. Follow the project's content guidelines, and
-   always:
+5. **Propose the bullet** in the résumé's language (in each one, when
+   there are several): action verb + what was done + result or scale.
+   Follow the project's content guidelines, and always:
    - only confirmed facts; no numbers estimated by you;
    - numbers only with evidence: scale they know (apps, components, people,
      users) can go in; gains (percentages, time or money saved) only if
@@ -74,14 +83,18 @@ in `docs/RESUME.md` for the résumé, the fact log, commits and pull requests.
    Show the bullet to the user and adjust it if they ask. If they already
    said to go ahead without review, continue and leave the review for the
    pull request.
-6. **Update the source.** Place the bullet under the right entry, with the
-   format rules declared in the project file (macros, escaping). If a block
-   grows past the size the guidelines allow, suggest what to merge or cut.
+6. **Update the source.** Place the bullet under the right entry, in every
+   language version, with the format rules declared in the project file
+   (macros, escaping). If a block grows past the size the guidelines
+   allow, suggest what to merge or cut.
 7. **Check** with the commands and limits declared in the project file
-   (build, text extraction, page limit, warnings). If the local toolchain
-   isn't available, use the CI route it declares. If the résumé goes over the
-   page limit, suggest cuts in the oldest or least relevant items, never in
-   the current position.
+   (build, text extraction, page limit, warnings), for every language
+   version, including any check that the versions are in sync. If the
+   local toolchain isn't available, use the CI route it declares. If the
+   résumé goes over the page limit, suggest cuts in the oldest or least
+   relevant items, never in the current position. When only one language
+   overflows, tighten its wording first, so the versions keep the same
+   content.
 8. **Commit** with the project's commit convention. Never commit the files
    declared as private.
 9. **Pull request** against the main branch, with a summary, a test plan
@@ -109,7 +122,9 @@ Otherwise:
    doesn't have stays out, even if it lowers the fit. No ATS tricks (white
    text, prompt injection).
 4. Make the changes on a `variant/<company-or-role>` branch and open the pull
-   request as a draft, so it doesn't mix with the main version.
+   request as a draft, so it doesn't mix with the main version. With
+   several language versions, tailor the one in the posting's language, and
+   ask before touching the others.
 
 ## Always
 
