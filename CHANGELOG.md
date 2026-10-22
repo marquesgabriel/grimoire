@@ -4,6 +4,15 @@ Format based on [Keep a Changelog](https://keepachangelog.com/); versions
 follow [SemVer](https://semver.org/). Each version entry merged into `main`
 becomes a tag and a GitHub release automatically.
 
+## [v1.2.0] — 2026-10-22
+### Adicionado
+- Library: `scaffolding-projects` promovida do incubator, reescrita como padrão genérico (montar um projeto novo ou auditar um existente), sem o estado datado dos projetos e com a regra de PRs dependentes do CONTRIBUTING.
+
+### Alterado
+- Incubator: `coding-user-stories` reescrita para implementar as histórias ela mesma, com uma issue no board e uma branch + PR por história (#6); continua no incubator até o primeiro uso real.
+- Doc `review-conventions`: o exemplo aponta para o `docs/REVIEW-CONVENTIONS.md` real do mtg.
+- README: instalação com `claude plugin install grimoire` e atualização com `claude plugin marketplace update grimoire` + `claude plugin update grimoire`.
+
 ## [v1.1.0] — 2026-10-21
 ### Adicionado
 - Library: `curating-resume` promovida do incubator. Agora é genérica: lê os dados de cada projeto em `docs/RESUME.md` (com modelo em `resume-project.template.md`, oferecido quando o arquivo não existe) e confirma cada fato com quem está usando, em vez de um dono fixo. O modo de adaptar à vaga continua provisório (#9).

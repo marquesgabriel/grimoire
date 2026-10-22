@@ -14,6 +14,7 @@ Ready to use; installed with the `grimoire` plugin.
 | `gathering-requirements` | Interviews the user like a Product Owner and writes a requirements document. First step of the requirements → stories → code pipeline. |
 | `writing-user-stories` | Breaks a requirements document into epics, features and user stories, with acceptance criteria, estimates, an implementation order and a review of technical gaps and business-rule risks. |
 | `curating-resume` | Keeps a résumé kept as code up to date: confirms career facts with the user, records them, writes the bullets, builds and opens the pull request. Project specifics come from `docs/RESUME.md`; the job-tailoring mode is still provisional ([#9](https://github.com/marquesgabriel/grimoire/issues/9)). |
+| `scaffolding-projects` | An opinionated standard for React/TypeScript projects on GitHub: Vite, versioning and releases, CI/CD, branch protection, labels and board, pull requests, docs. Sets up new projects or audits existing ones. |
 
 ## Incubator
 
@@ -24,7 +25,6 @@ Works, but still being shaped. Not published.
 | Skill | What it does | What's missing |
 |---|---|---|
 | `coding-user-stories` | Implements a backlog story by story: one issue on the board and one branch and pull request per story, with tests, the project's checks and `Closes #N`, respecting dependencies and acceptance criteria. Last step of the requirements → stories → code pipeline. | A first real use in a project before promotion ([#6](https://github.com/marquesgabriel/grimoire/issues/6)). |
-| `scaffolding-projects` | An opinionated standard for React/TypeScript projects on GitHub: Vite, versioning and releases, CI/CD, branch protection, labels and board, pull requests, docs. Sets up new projects or audits existing ones. | Promotion, once the rewrite is reviewed ([#7](https://github.com/marquesgabriel/grimoire/issues/7)). |
 
 ### Docs
 
