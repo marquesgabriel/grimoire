@@ -1,6 +1,6 @@
 ---
 name: coding-user-stories
-description: Implements the user stories of a structured backlog (usually from the writing-user-stories skill) one by one, each on its own branch and pull request, respecting dependencies and acceptance criteria, with each story tracked as an issue on the project's GitHub board. Use when the user asks to "start coding the backlog", "implement the next story", "work through the stories", "what's next", or points to a backlog file asking to start development. Creates the issues on first run, then for each story picks the next one, implements it with tests, runs the project's checks, opens the pull request with Closes #N and moves on, keeping at most 3 of its pull requests open for review.
+description: Implements the user stories of a structured backlog (usually from the writing-user-stories skill) one by one, each on its own branch and pull request, respecting dependencies and acceptance criteria, with each story tracked as an issue on the project's GitHub board. Use when the user asks to "start coding the backlog", "implement the next story", "work through the stories", "what's next", or points to a backlog file asking to start development. Creates the issues on first run, then for each story picks the next one, implements it with tests, runs the project's checks, opens the pull request with Closes #N and moves on to the next story.
 ---
 
 # Coding user stories
@@ -123,11 +123,12 @@ acceptance criteria, the backlog notes or the code already answer.
 - Wait for CI. If it fails, fix it on the same branch.
 - **Don't merge.** The user reviews and merges.
 
-### 7. Go on, within the limit
+### 7. Go on
 
-Keep **at most 3 of your pull requests open** at once. Below the limit, go
-back to step 1. At the limit, stop and report: which pull requests are
-waiting for review, in which merge order, and what comes next.
+Go back to step 1 and keep going until no story can start (everything left
+depends on something not yet built, or is blocked), or the user asks you to
+stop. Then report: which pull requests are waiting for review, in which
+merge order, and what comes next.
 
 ## Dependent stories
 
